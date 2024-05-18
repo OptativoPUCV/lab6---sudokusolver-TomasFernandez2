@@ -44,32 +44,32 @@ void print_node(Node* n){
 }
 
 int is_valid(Node* n){
-    int row[9], col[9], subgrid[9];
+    int fila[9], columna[9], cuadricula[9];
 
     for(int i = 0; i < 9; i++){
         for(int j = 0; j < 9; j++){
-            row[j] = col[j] = subgrid[j] = 0;
+            fila[j] = columna[j] = cuadricula[j] = 0;
         }
         for(int j = 0; j < 9; j++){
             if(n->sudo[i][j] != 0) {
-                if(row[n->sudo[i][j] - 1] == 1)
+                if(fila[n->sudo[i][j] - 1] == 1)
                     return 0;
-                row[n->sudo[i][j] - 1] = 1;
+                fila[n->sudo[i][j] - 1] = 1;
             }
             if(n->sudo[j][i] != 0) {
-                if(col[n->sudo[j][i] - 1] == 1)
+                if(columna[n->sudo[j][i] - 1] == 1)
                     return 0;
-                col[n->sudo[j][i] - 1] = 1;
+                columna[n->sudo[j][i] - 1] = 1;
             }
         }
-        int subgridRow = (i / 3) * 3;
-        int subgridCol = (i % 3) * 3;
-        for(int r = subgridRow; r < subgridRow + 3; r++){
-            for(int c = subgridCol; c < subgridCol + 3; c++){
+        int cuadriculaFila = (i / 3) * 3;
+        int cuadriculaColum = (i % 3) * 3;
+        for(int r = cuadriculaFila; r < cuadriculaFila + 3; r++){
+            for(int c = cuadriculaColum; c < cuadriculaColum + 3; c++){
                 if(n->sudo[r][c] != 0) {
-                    if(subgrid[n->sudo[r][c] - 1] == 1)
+                    if(cuadricula[n->sudo[r][c] - 1] == 1)
                         return 0;
-                    subgrid[n->sudo[r][c] - 1] = 1;
+                    cuadricula[n->sudo[r][c] - 1] = 1;
                 }
             }
         }
@@ -118,20 +118,17 @@ Node* DFS(Node* initial, int* cont) {
     if (is_final(initial)) {
         return initial;
     }
-
     List* neighbors = get_adj_nodes(initial);
     Node* result = NULL;
     Node* neighbor;
-
     for (neighbor = first(neighbors); neighbor != NULL; neighbor = next(neighbors)) {
         result = DFS(neighbor, cont);
         if (result != NULL) {
-            clean(neighbors); // Liberar memoria de la lista de vecinos
+            clean(neighbors);
             return result;
         }
     }
-
-    clean(neighbors); // Liberar memoria de la lista de vecinos
+    clean(neighbors);
     return NULL;
 }
 
