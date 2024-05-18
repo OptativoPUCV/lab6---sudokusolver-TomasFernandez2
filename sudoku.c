@@ -113,8 +113,26 @@ int is_final(Node *n) {
 }
 
 
-Node* DFS(Node* initial, int* cont){
-  return NULL;
+Node* DFS(Node* initial, int* cont) {
+    (*cont)++;
+    if (is_final(initial)) {
+        return initial;
+    }
+
+    List* neighbors = get_adj_nodes(initial);
+    Node* result = NULL;
+    Node* neighbor;
+
+    for (neighbor = first(neighbors); neighbor != NULL; neighbor = next(neighbors)) {
+        result = DFS(neighbor, cont);
+        if (result != NULL) {
+            clean(neighbors); // Liberar memoria de la lista de vecinos
+            return result;
+        }
+    }
+
+    clean(neighbors); // Liberar memoria de la lista de vecinos
+    return NULL;
 }
 
 
