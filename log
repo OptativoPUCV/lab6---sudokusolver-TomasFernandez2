@@ -21,3 +21,19 @@ sudoku.c:147:5: note: previous definition of ‘main’ with type ‘int(int,  c
 cc1: all warnings being treated as errors
 Compilation failed
 bccf314
+Sat 18 May 2024 05:22:33 PM UTC: 
+ sudoku.c | 109 ++++++++++++++++++++++-----------------------------------------
+ 1 file changed, 38 insertions(+), 71 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘DFS’:
+sudoku.c:118:12: error: implicit declaration of function ‘isEmpty’; did you mean ‘is_empty’? [-Werror=implicit-function-declaration]
+  118 |     while(!isEmpty(stack)){
+      |            ^~~~~~~
+      |            is_empty
+sudoku.c:129:9: error: implicit declaration of function ‘freeList’; did you mean ‘createList’? [-Werror=implicit-function-declaration]
+  129 |         freeList(adj);
+      |         ^~~~~~~~
+      |         createList
+cc1: all warnings being treated as errors
+Compilation failed
+a167e66
