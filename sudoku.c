@@ -113,22 +113,22 @@ int is_final(Node *n) {
 }
 
 
-Node* DFS(Node* initial, int* cont) {
+Node* DFS(Node* n, int* cont) {
     (*cont)++;
-    if (is_final(initial)) {
-        return initial;
+    if (is_final(n)) {
+        return n;
     }
-    List* neighbors = get_adj_nodes(initial);
+    List* vecinos = get_adj_nodes(n);
     Node* result = NULL;
-    Node* neighbor;
-    for (neighbor = first(neighbors); neighbor != NULL; neighbor = next(neighbors)) {
-        result = DFS(neighbor, cont);
+    Node* vecino;
+    for (vecino = first(vecinos); vecino != NULL; vecino = next(vecinos)) {
+        result = DFS(vecino, cont);
         if (result != NULL) {
-            clean(neighbors);
+            clean(vecinos);
             return result;
         }
     }
-    clean(neighbors);
+    clean(vecinos);
     return NULL;
 }
 
