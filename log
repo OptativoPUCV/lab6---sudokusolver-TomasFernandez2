@@ -37,3 +37,17 @@ sudoku.c:129:9: error: implicit declaration of function ‘freeList’; did you 
 cc1: all warnings being treated as errors
 Compilation failed
 a167e66
+Sat 18 May 2024 05:24:28 PM UTC: 
+ sudoku.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+In file included from test.c:5:
+sudoku.c: In function ‘isEmpty’:
+sudoku.c:22:17: error: invalid use of incomplete typedef ‘Stack’ {aka ‘List’}
+   22 |     return stack->top == NULL;
+      |                 ^~
+sudoku.c:23:1: error: control reaches end of non-void function [-Werror=return-type]
+   23 | }
+      | ^
+cc1: all warnings being treated as errors
+Compilation failed
+b801c0a

@@ -18,6 +18,10 @@ Node* copy(Node* n){
     return new;
 }
 
+int isEmpty(Stack* stack) {
+    return stack->top == NULL;
+}
+
 Node* read_file (char* file_name){
   Node* n = createNode();
   FILE* file = fopen (file_name, "r");
@@ -126,7 +130,7 @@ Node* DFS(Node* initial, int* cont){
             push(stack, adjNode);
         }
         free(node);
-        freeList(adj);
+        clean(adj);
         (*cont)++;
     }
     return NULL;
