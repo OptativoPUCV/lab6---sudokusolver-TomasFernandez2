@@ -1,0 +1,23 @@
+Sat 18 May 2024 05:17:29 PM UTC: 
+ sudoku.c | 108 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 106 insertions(+), 2 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘DFS’:
+sudoku.c:128:11: error: implicit declaration of function ‘isEmpty’; did you mean ‘is_empty’? [-Werror=implicit-function-declaration]
+  128 |   while (!isEmpty(stack)) {
+      |           ^~~~~~~
+      |           is_empty
+sudoku.c:141:5: error: implicit declaration of function ‘destroyList’ [-Werror=implicit-function-declaration]
+  141 |     destroyList(adj);
+      |     ^~~~~~~~~~~
+test.c: At top level:
+test.c:245:5: error: redefinition of ‘main’
+  245 | int main( int argc, char *argv[] ) {
+      |     ^~~~
+In file included from test.c:5:
+sudoku.c:147:5: note: previous definition of ‘main’ with type ‘int(int,  char **)’
+  147 | int main(int argc, char* argv[]) {
+      |     ^~~~
+cc1: all warnings being treated as errors
+Compilation failed
+bccf314
