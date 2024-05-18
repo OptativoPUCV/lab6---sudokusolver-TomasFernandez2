@@ -18,10 +18,6 @@ Node* copy(Node* n){
     return new;
 }
 
-int isEmpty(Stack* stack) {
-    return stack->top == NULL;
-}
-
 Node* read_file (char* file_name){
   Node* n = createNode();
   FILE* file = fopen (file_name, "r");
@@ -115,26 +111,10 @@ int is_final(Node* n){
     return is_valid(n);
 }
 
-
 Node* DFS(Node* initial, int* cont){
-    Stack* stack = createStack();
-    push(stack, initial);
-    while(!isEmpty(stack)){
-        Node* node = top(stack);
-        pop(stack);
-        if(is_final(node)){
-            return node;
-        }
-        List* adj = get_adj_nodes(node);
-        for(Node* adjNode = first(adj); adjNode != NULL; adjNode = next(adj)){
-            push(stack, adjNode);
-        }
-        free(node);
-        clean(adj);
-        (*cont)++;
-    }
-    return NULL;
+  return NULL;
 }
+
 
 
 
